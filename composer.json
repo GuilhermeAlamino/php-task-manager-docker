@@ -1,0 +1,30 @@
+{
+    "name": "guilhermealamino/task-manager",
+    "description": "task-manager",
+    "authors": [
+        {
+            "name": "GuilhermeAlamino",
+            "email": "guilhermedevelopedweb@hotmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "files": [
+            "App/Helpers/Config.php",
+            "App/Router/Router.php",
+            "App/Core/Controller.php",
+            "App/DataBase/Connect.php",
+            "App/DataBase/List/Fetch.php",
+            "App/DataBase/List/Create.php",
+            "App/DataBase/List/Delete.php",
+            "App/DataBase/List/Update.php",
+            "App/Helpers/Redirect.php",
+            "App/Helpers/Flash.php",
+            "App/Helpers/Helpers.php",
+            "App/Helpers/Validate.php"
+        ],
+        "psr-4": {
+            "App\\": "App"
+        }
+    }
+}
