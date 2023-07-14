@@ -21,19 +21,21 @@ return new PDO("mysql:host=127.0.0.1;dbname=task-manager", 'root', '', [
   ]);
 ```
 8. A baixo está nossa arquitetura de pastas.
-    1. App <br>{
+    1. App {<br>
         1.1 Controllers<br>
         1.2 Core<br>
         1.3 DataBase<br>
         1.4 Helpers<br>
         1.5 Router<br>
         1.6 Views<br>
-    2. Public <br>{
+    }
+    2. Public {<br>
         1.7 assets<br>{
         1.8 css<br>
         1.9 img
         2.0 js
         }
+    }
         
 
 Leia a baixo para mais detalhes 
