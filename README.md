@@ -43,8 +43,8 @@ return new PDO("mysql:host=127.0.0.1;dbname=task-manager", 'root', '', [
     2. Public {<br>
         1.7 assets<br>{
         1.8 css<br>
-        1.9 img
-        2.0 js
+        1.9 img<br>
+        2.0 js<br>
         }<br>
     }
         
