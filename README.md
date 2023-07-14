@@ -10,9 +10,18 @@ Temos aqui uma Arquitetura MVC Estruturada com PHP, abaixo está toda a document
 4. Se tiver usando xampp e windows pode coloca-la C:\xampp\htdocs\ *sua pasta aqui* ou git clone via terminal passando essa URL -> https://github.com/GuilhermeAlamino/structured-mvc-php-poo.git.
 5. Usando seu terminal vá até a pasta do projeto e inicie o servidor passando pra qual pasta e arquivo quer que o PHP e qual porta começe a intrepetar : php -S localhost:5000 -t public.
 6. Ligue o seu servidor de banco de dados no exemplo utilizei mysql.
-7. Você precisa criar uma banco de dados, e uma tabela e tambem duas colunas 1 campo com id increments e outro campo especificando o nome da task vou deixar o caminho e um exemplo podera configurar:
+7. Você precisa criar uma banco de dados, e uma tabela e tambem duas colunas 1 campo com id increments e outro campo especificando o nome da task vou deixar um exemplo e podera configurar no arquivo Connect:
 ```php
- <img src="./Public/assets/img/db.png">
+ CREATE TABLE `list` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`task` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
+	PRIMARY KEY (`id`) USING BTREE
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=7
+;
+
 
 Arquivo de configuração do banco de dados
 
