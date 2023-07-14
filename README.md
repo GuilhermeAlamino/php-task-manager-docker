@@ -42,6 +42,9 @@ Leia a baixo para mais detalhes
 
 ## Observações
 
+
+Projeto simples visando um to-do-list com 1 input contendo a tarefa, e podendo editar deletar e criar de forma dinâmica na mesma página com mesmo input :).
+
 Ná pasta Database utilizei a pasta contendo seus respectivos arquivos e conteudos visando o Model ou seja cada conteudo contendo seus próprios arquivos de relacão com banco, para futuramente implementar ORM (Object Relational Mapper).
 
 ## Rotas
