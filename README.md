@@ -12,7 +12,7 @@ Temos aqui uma Arquitetura MVC Estruturada com PHP, abaixo está toda a document
 6. Ligue o seu servidor de banco de dados no exemplo utilizei mysql.
 7. Você precisa criar uma banco de dados, e uma tabela e tambem duas colunas 1 campo com id increments e outro campo especificando o nome da task vou deixar o caminho e um exemplo podera configurar:
 ```php
-![image](https://github.com/GuilhermeAlamino/structured-mvc-php-poo/assets/75227213/f2ce8e88-b54b-478e-90a4-437f6f18fa98)
+ <img src="/public/img/db.png>
 
 Arquivo de configuração do banco de dados
 
