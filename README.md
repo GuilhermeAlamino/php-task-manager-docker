@@ -10,20 +10,23 @@ Temos aqui uma Arquitetura MVC Estruturada com PHP e com Docker, abaixo está to
 4. Se tiver usando xampp e windows pode coloca-la C:\xampp\htdocs\ *sua pasta aqui* ou git clone via terminal passando essa URL -> https://github.com/GuilhermeAlamino/php-task-manager.git.
 5. Usando seu terminal vá até a pasta do projeto e inicie os Containers para simplificar a execução do projeto sendo assim ele vai iniciar os serviçõs que precisam ser executados e criar o banco com as tabelas e colunas necessarias: 
 
+Primeiro se estiver executando algum container neste projeto, precisa interromper e remover todos como o comando abaixo
+
 ```php
 
-Primeiro se estiver executando algum container neste projeto, precisa interromper e remover todos como o comando abaixo
-docker-compose down.
+docker-compose down
 
 ```
 6. Agora pode subir os containers com o comando abaixo.
 
+Com esse comando você estara iniciando todos os serviços do docker-compose.yml o "-d" executa ele em segundo plano ou seja background.
+
 ```php
 
-Com esse comando você estara iniciando todos os serviços do docker-compose.yml o "-d" executa ele em segundo plano ou seja background.
-docker-compose up -d.
+docker-compose up -d
 
 ```
+
 7. Arquivo de configuração do banco de dados
 
 ```php
