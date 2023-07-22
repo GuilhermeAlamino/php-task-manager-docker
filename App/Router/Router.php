@@ -2,8 +2,7 @@
 function exactMatchUriInArrayRoutes($uri, $routes): array
 {
 
-    return (array_key_exists($uri, $routes)) ? [$uri => $routes[$uri]] : [];
-
+  return (array_key_exists($uri, $routes)) ? [$uri => $routes[$uri]] : [];
 }
 
 function regularExpressionMatchArrayRoutes($uri, $routes)

@@ -1,3 +1,8 @@
+axios.defaults.headers = {
+  "Content-Type": 'application/json',
+  HTTP_X_REQUESTED_WITH: 'XMLHttpRequest',
+}
+
 function enableEdit(button, id) {
   var td = button.parentNode.previousElementSibling;
   var input = td.querySelector("input");
@@ -17,32 +22,22 @@ function enableEdit(button, id) {
 
     showLoading();
 
-    // Aqui você pode fazer a requisição Ajax para enviar o ID e o valor da tarefa
-    $.ajax({
-      url: "/task/edit/" + id, // Caminho para a outra rota que receberá o ID e o valor da tarefa
-      method: "POST",
-      data: {
-        taskId: id,
-        taskValue: taskValue
-      },
-      success: function (response) {
-        // Insira aqui o código para manipular a resposta do servidor
-        console.log(response);
+    edit();
 
-        showSuccessMessage("Tarefa editada com sucesso.", false);
-        // Redirecionar para a página inicial após um certo tempo
+    async function edit() {
+      try {
+        const { data } = await axios.post('/task/edit/' + id, { taskValue });
         setTimeout(function () {
           window.location.href = '/';
           hideLoading();
 
         }, 2000);
-
-      },
-      error: function (xhr, status, error) {
+        showSuccessMessage("Atualizado com sucesso.");
+        console.log(data);
+      } catch (error) {
         console.log(error);
-        alert("Ocorreu um erro ao salvar a tarefa. Por favor, tente novamente.");
       }
-    });
+    }
 
     input.setAttribute("disabled", "disabled");
     input.classList.remove("focused");
@@ -50,74 +45,29 @@ function enableEdit(button, id) {
   }
 }
 
-function addTask() {
-
-  var taskInput = document.getElementById("input-create");
-  var taskValue = taskInput.value;
-
-  if (taskValue.trim() === "") {
-    showSuccessMessage("Digite uma tarefa válida.", true);
-
-    return;
-  }
-
-  console.log(taskValue);
-  showLoading();
-  $.ajax({
-    url: "/task/create", // Caminho para o arquivo PHP que processa a adição da tarefa
-    method: "POST",
-    data: { task: taskValue },
-    success: function (response) {
-
-      console.log(response);
-
-      showSuccessMessage("Tarefa adicionada com sucesso.", false);
-      // Redirecionar para a página inicial após um certo tempo
-      setTimeout(function () {
-        window.location.href = '/';
-        hideLoading();
-
-      }, 2000);
-
-    },
-    error: function (xhr, status, error) {
-      console.log(status);
-      alert("Ocorreu um erro ao adicionar a tarefa. Por favor, tente novamente.");
-    }
-  });
-
-}
-
 function verifyDelete(id) {
   showLoading();
 
-  $.ajax({
-    url: "/task/delete/" + id, // Caminho para o arquivo PHP que processa a adição da tarefa
-    method: "POST",
-    data: { taskId: id },
-    success: function (response) {
-
-      console.log(response);
-      showSuccessMessage("Tarefa excluída com sucesso.", true);
-      // Redirecionar para a página inicial após um certo tempo
+  deleteTask();
+  async function deleteTask() {
+    try {
+      const { data } = await axios.post('/task/delete/' + id);
       setTimeout(function () {
         window.location.href = '/';
         hideLoading();
-
       }, 2000);
-    },
-    error: function (xhr, status, error) {
-      console.log(status);
-      alert("Ocorreu um erro ao adicionar a tarefa. Por favor, tente novamente.");
+      showSuccessMessage("Deletado com sucesso.", true);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
     }
-  });
+  }
 
 }
 
 function showSuccessMessage(message, isDelete) {
   var successMessages = document.getElementsByClassName("success-message");
 
-  // Iterar sobre a coleção de elementos
   for (var i = 0; i < successMessages.length; i++) {
     var successMessage = successMessages[i];
     successMessage.innerHTML = message;
@@ -130,10 +80,9 @@ function showSuccessMessage(message, isDelete) {
 
     successMessage.style.display = "block";
 
-    // Ocultar a mensagem de sucesso após um determinado tempo
     setTimeout(function () {
       successMessage.style.display = "none";
-    }, 2000); // Tempo em milissegundos (2 segundos neste exemplo)
+    }, 2000);
   }
 }
 

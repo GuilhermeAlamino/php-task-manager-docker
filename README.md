@@ -1,35 +1,38 @@
-# structured-mvc-php-poo
+# php-task-manager
 
-Temos aqui uma Arquitetura MVC Estruturada com PHP, abaixo está toda a documentação para entendimento da arquitetura padrão que utilizei.
+Temos aqui uma Arquitetura MVC Estruturada com PHP e com Docker, abaixo está toda a documentação para entendimento da arquitetura padrão que utilizei.
 
 ## Start da aplicação
 
 1. Execute: baixe o repositório em sua máquina.
 2. Agora você precisa ter o composer instalado para intepretar os command e gerenciar as dependências do PHP: https://getcomposer.org/download/.
 3. Execute **composer update** para instalar as dependencias do projeto.
-4. Se tiver usando xampp e windows pode coloca-la C:\xampp\htdocs\ *sua pasta aqui* ou git clone via terminal passando essa URL -> https://github.com/GuilhermeAlamino/structured-mvc-php-poo.git.
-5. Usando seu terminal vá até a pasta do projeto e inicie o servidor passando pra qual pasta e arquivo quer que o PHP e qual porta começe a intrepetar : php -S localhost:5000 -t public.
-6. Ligue o seu servidor de banco de dados no exemplo utilizei mysql.
-7. Você precisa criar uma banco de dados, e uma tabela e tambem duas colunas 1 campo com id increments e outro campo especificando o nome da task vou deixar um exemplo e podera configurar no arquivo Connect:
+4. Se tiver usando xampp e windows pode coloca-la C:\xampp\htdocs\ *sua pasta aqui* ou git clone via terminal passando essa URL -> https://github.com/GuilhermeAlamino/php-task-manager.git.
+5. Usando seu terminal vá até a pasta do projeto e inicie os Containers para simplificar a execução do projeto sendo assim ele vai iniciar os serviçõs que precisam ser executados e criar o banco com as tabelas e colunas necessarias: 
+
 ```php
- CREATE TABLE `list` (
-	`id` INT(11) NOT NULL AUTO_INCREMENT,
-	`task` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci',
-	PRIMARY KEY (`id`) USING BTREE
-)
-COLLATE='utf8mb4_general_ci'
-ENGINE=InnoDB
-AUTO_INCREMENT=7
-;
 
+Primeiro se estiver executando algum container neste projeto, precisa interromper e remover todos como o comando abaixo
+docker-compose down.
 
-Arquivo de configuração do banco de dados
+```
+6. Agora pode subir os containers com o comando abaixo.
 
-\task-manager\App\DataBase
+```php
+
+Com esse comando você estara iniciando todos os serviços do docker-compose.yml o "-d" executa ele em segundo plano ou seja background.
+docker-compose up -d.
+
+```
+7. Arquivo de configuração do banco de dados
+
+```php
+App\DataBase\Connect
 
 return new PDO("mysql:host=127.0.0.1;dbname=task-manager", 'root', '', [
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
   ]);
+  
 ```
 8. A baixo está nossa arquitetura de pastas.
     1. App {<br>

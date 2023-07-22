@@ -15,6 +15,10 @@ body {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
 }
 
 #new-task {
@@ -170,4 +174,8 @@ td {
 
 .d-none {
   display: none !important;
+}
+
+.task_message {
+  width: 100%;
 }

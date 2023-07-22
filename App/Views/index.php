@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
-  <!-- Stylesheet -->
-  <title><?php echo $title ?></title>
-
-</head>
+<?php require 'Components/header.php'; ?>
 
 <body>
   <div class="container">
-    <div class="success-message"></div>
+    <div class=" success-message"></div>
 
-    <div id="new-task">
-      <input type="text" name="task" id="input-create" placeholder="Digite aqui uma tarefa..." />
-      <button id="push" onclick="addTask()">Adicionar</button>
-    </div>
+    <form action="/task/create" method="post">
+      <?php echo getCsrf() ?>
+      <div id="new-task">
+        <input type="text" name="task" id="input-create" value="<?php echo getOld('task') ?>" placeholder="Digite aqui uma tarefa..." />
+        <button type="submit">Adicionar</button>
+        <div class="task_message">
+          <?php echo getFlash('task', "background:#ff0000a3;color:white;padding:5px;border-radius: 3px;"); ?>
+          <?php echo getFlash('message-error', "background:#ff0000a3;color:white;padding:5px;border-radius: 3px;"); ?>
+          <?php echo getFlash('message', "background:#008000b5;color:white;padding:5px;border-radius: 3px;"); ?>
+        </div>
+      </div>
+
+    </form>
+
     <div id="tasks">
       <div class="table-wrapper">
         <table class="table">
@@ -51,9 +47,5 @@
   <div id="loading" class="loading d-none">
     <div class="loading-spinner"></div>
   </div>
-  <!-- Script -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="/assets/js/script.js"></script>
-</body>
 
-</html>
+  <?php require 'Components/footer.php'; ?>

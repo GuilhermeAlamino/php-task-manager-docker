@@ -11,6 +11,7 @@ function listAll($fields = "*", $table = 'list')
     return $query->fetchAll();
   } catch (PDOException $e) {
     var_dump($e->getMessage());
+    die();
   }
 }
 
@@ -27,5 +28,6 @@ function listFindBy($field, $value, $fields = '*', $table = 'list')
     return $prepare->fetch();
   } catch (PDOException $e) {
     var_dump($e->getMessage());
+    die();
   }
 }

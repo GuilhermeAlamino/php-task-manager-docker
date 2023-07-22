@@ -3,7 +3,12 @@
 require './session.php';
 
 try {
+
   $arrayData = router();
+
+  if (isAjax()) {
+    die();
+  }
 
   if (!isset($arrayData['data']['title'])) throw new Exception("Indice Title Not Found ");
 
@@ -20,4 +25,5 @@ try {
   require VIEWS . 'index.php';
 } catch (Exception $e) {
   var_dump($e->getMessage());
+  die();
 }

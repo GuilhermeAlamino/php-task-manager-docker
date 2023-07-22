@@ -2,10 +2,11 @@
 
 function createTask($data, $table = 'list')
 {
+
   try {
 
     if (!isAssociativeArray($data)) {
-      throw new Exception("Array tem que ser associativo");
+      throw new Exception("O Array tem que ser associativo para criação");
     }
 
     $connect = connect();
@@ -20,5 +21,6 @@ function createTask($data, $table = 'list')
     return $prepare->execute($data);
   } catch (PDOException $e) {
     var_dump($e->getMessage());
+    die();
   }
 }
